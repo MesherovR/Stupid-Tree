@@ -110,9 +110,7 @@ namespace testWpf
                   {
                       using (ApplicationContext db = new ApplicationContext())
                       {
-
-
-                          db.Nodes.Add(InformationNode);
+                          db.Update(InformationNode);
                           db.SaveChanges();
                       }
                   }));

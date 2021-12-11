@@ -7,16 +7,15 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <TextBox x:Name="currentNodeTextBox" HorizontalAlignment="Center" Margin="0,61,0,0" TextWrapping="Wrap" Text="{Binding InformationNode.Text, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="437" Height="52">
-            <TextBox.Background>
-                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                    <GradientStop Color="White"/>
-                    <GradientStop Color="#FFE5E5E5" Offset="1"/>
-                </LinearGradientBrush>
-            </TextBox.Background>
-        </TextBox>
-        <Button x:Name="addLowerNode" Content="Create new node" HorizontalAlignment="Left" Height="30" Margin="644,144,0,0" VerticalAlignment="Top" Width="108" Command="{Binding AddCommand}" ToolTip="create node with setted text"/>
-        <TextBox x:Name="textLowerNodes" HorizontalAlignment="Center" Margin="0,129,0,0" TextWrapping="Wrap" Text="{Binding InputText,UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="436" Height="61"/>
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="White"/>
+                <GradientStop Color="#FFE6F9F1" Offset="1"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+        <TextBox x:Name="currentNodeTextBox" HorizontalAlignment="Left" Margin="115,71,0,0" TextWrapping="Wrap" Text="{Binding InformationNode.Text, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="437" Height="52" Background="#FFF5FCF8"/>
+        <Button x:Name="addLowerNode" Content="Create new node" HorizontalAlignment="Left" Height="42" Margin="573,145,0,0" VerticalAlignment="Top" Width="110" Command="{Binding AddCommand}" ToolTip="create node with setted text" Background="#FFAFF9BC"/>
+        <TextBox x:Name="textLowerNodes" HorizontalAlignment="Left" Margin="115,141,0,0" TextWrapping="Wrap" Text="{Binding InputText,UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="436" Height="61" Background="#FFF0F7F7"/>
         <ListView x:Name="listView" HorizontalAlignment="Stretch" ItemsSource="{Binding InformationNode.LowerInformationNodes, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedInformationNode}" Margin="10,217,10,10">
             <ListView.View>
                 <GridView>
@@ -26,12 +25,13 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <Button x:Name="openInformationNode" Content="Open" HorizontalAlignment="Left" Margin="20,192,0,0" VerticalAlignment="Top" CommandParameter="{Binding SelectedInformationNode}" Command="{Binding OpenCommand}" ToolTip="open selected node" />
-        <TextBlock x:Name="upperInforamtionNode" HorizontalAlignment="Center" Margin="0,10,0,0" TextWrapping="Wrap" Text="{Binding InformationNode.UpperInforamtionNodes.Text}" VerticalAlignment="Top" Height="44" Width="436" Background="#FFDFF7D9"/>
-        <Button x:Name="openUpperInformationNode" Content="Up" HorizontalAlignment="Left" Margin="644,12,0,0" VerticalAlignment="Top" Command="{Binding UpCommand}" Height="20" Width="33" ToolTip="open upper node"/>
-        <Button x:Name="deleteInformationNode" Content="delete" HorizontalAlignment="Left" Margin="59,192,0,0" VerticalAlignment="Top" Height="20" Width="81" Command="{Binding DeleteCommand}" CommandParameter="{Binding SelectedInformationNode}" ToolTip="delete selected node"/>
-        <TextBlock x:Name="textBlockUpperNode" HorizontalAlignment="Left" Margin="83,24,0,0" TextWrapping="Wrap" Text="Text upper node" VerticalAlignment="Top"/>
-        <TextBlock x:Name="textBlockCurrentNode" HorizontalAlignment="Left" Margin="77,79,0,0" TextWrapping="Wrap" Text="Text current node" VerticalAlignment="Top"/>
-        <TextBlock x:Name="textBlockLowerNode" HorizontalAlignment="Left" Margin="91,152,0,0" TextWrapping="Wrap" Text="Entered Text" VerticalAlignment="Top"/>
+        <Button x:Name="openInformationNode" Content="Open" HorizontalAlignment="Left" Margin="703,145,0,0" VerticalAlignment="Top" CommandParameter="{Binding SelectedInformationNode}" Command="{Binding OpenCommand}" ToolTip="open selected node" Height="42" Width="87" Background="#FFCFFFF1" />
+        <TextBlock x:Name="upperInforamtionNode" HorizontalAlignment="Left" Margin="115,5,0,0" TextWrapping="Wrap" Text="{Binding InformationNode.UpperInforamtionNodes.Text}" VerticalAlignment="Top" Height="44" Width="436" Background="#FFF6F9F8"/>
+        <Button x:Name="openUpperInformationNode" Content="Up" HorizontalAlignment="Left" Margin="573,9,0,0" VerticalAlignment="Top" Command="{Binding UpCommand}" Height="38" Width="110" ToolTip="open upper node" Background="#FFCFFFF1"/>
+        <Button x:Name="deleteInformationNode" Content="delete" HorizontalAlignment="Left" Margin="703,80,0,0" VerticalAlignment="Top" Height="43" Width="87" Command="{Binding DeleteCommand}" CommandParameter="{Binding SelectedInformationNode}" ToolTip="delete selected node" Background="#FFE90000"/>
+        <TextBlock x:Name="textBlockUpperNode" HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="Text upper node" VerticalAlignment="Top"/>
+        <TextBlock x:Name="textBlockCurrentNode" HorizontalAlignment="Left" Margin="10,71,0,0" TextWrapping="Wrap" Text="Text current node" VerticalAlignment="Top"/>
+        <TextBlock x:Name="textBlockLowerNode" HorizontalAlignment="Left" Margin="10,143,0,0" TextWrapping="Wrap" Text="Entered Text" VerticalAlignment="Top"/>
+        <Button x:Name="saveCurrentState" Content="Save" HorizontalAlignment="Left" Margin="703,9,0,0" VerticalAlignment="Top" Command="{Binding SaveCommand}" ToolTip="Save current state" Height="37" Width="87" Background="#FFAFF9BC"/>
     </Grid>
 </Window>
