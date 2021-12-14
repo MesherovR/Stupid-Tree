@@ -33,5 +33,6 @@
         <TextBlock x:Name="textBlockCurrentNode" HorizontalAlignment="Left" Margin="10,71,0,0" TextWrapping="Wrap" Text="Text current node" VerticalAlignment="Top"/>
         <TextBlock x:Name="textBlockLowerNode" HorizontalAlignment="Left" Margin="10,143,0,0" TextWrapping="Wrap" Text="Entered Text" VerticalAlignment="Top"/>
         <Button x:Name="saveCurrentState" Content="Save" HorizontalAlignment="Left" Margin="703,9,0,0" VerticalAlignment="Top" Command="{Binding SaveCommand}" ToolTip="Save current state" Height="37" Width="87" Background="#FFAFF9BC"/>
+        <Button x:Name="autoOpenNode" Content="Auto" HorizontalAlignment="Left" Margin="573,79,0,0" VerticalAlignment="Top" Height="22" Width="55" Command="{Binding GetAutoAnswer}"/>
     </Grid>
 </Window>

@@ -15,7 +15,6 @@ namespace testWpf
     {
         RelayCommand addCommand;
         RelayCommand saveCommand;
-        RelayCommand editCommand;
         RelayCommand deleteCommand;
         public ViewModel()
         {
@@ -41,12 +40,9 @@ namespace testWpf
             set 
             {
                 informationNode = value; 
-                //InformationNodes = new ObservableCollection<InformationNode>(informationNode.LowerInformationNodes);
                 OnPropertyChanged(nameof(InformationNode)); 
             } 
         }
-        //private ObservableCollection<InformationNode> informationNodes;
-        //public ObservableCollection<InformationNode> InformationNodes { get { return informationNodes; } set { informationNodes = value; OnPropertyChanged(nameof(informationNodes)); } }
 
         private ObservableCollection<InformationNode> informationNodes;
         public ObservableCollection<InformationNode> InformationNodes 
@@ -85,18 +81,7 @@ namespace testWpf
                               db.Nodes.Add(informationNode);
                               db.SaveChanges();
                           }
-
-
-
                       }
-
-                      //PhoneWindow phoneWindow = new PhoneWindow(new Phone());
-                      //if (phoneWindow.ShowDialog() == true)
-                      //{
-                      //    Phone phone = phoneWindow.Phone;
-                      //    db.Phones.Add(phone);
-                      //    db.SaveChanges();
-                      //}
                   }));
             }
         }
@@ -130,10 +115,32 @@ namespace testWpf
                         if(obj != null)
                         {
                             InformationNode informationNode = obj as InformationNode;
-                            //InformationNode.LowerInformationNodes = informationNode.LowerInformationNodes;
                             InformationNode = informationNode;
                         }
                         
+
+
+                    }));
+            }
+        }
+
+
+        private RelayCommand getAutoAnswer;
+        public RelayCommand GetAutoAnswer
+        {
+            get
+            {
+                return getAutoAnswer ??
+                    (getAutoAnswer = new RelayCommand(obj =>
+                    {
+                        string fullPath = "";
+                        while (InformationNode.LowerInformationNodes.Count > 0)
+                        {
+                            InformationNode = InformationNode.LowerInformationNodes[new Random().Next(InformationNode.LowerInformationNodes.Count())];
+                            fullPath = fullPath + "/" + InformationNode.Text  ;
+                        }
+                        
+                        MessageBox.Show(fullPath);
 
 
                     }));
@@ -160,44 +167,6 @@ namespace testWpf
             }
         }
 
-        // команда редактирования
-        public RelayCommand EditCommand
-        {
-            get
-            {
-                return editCommand ??
-                  (editCommand = new RelayCommand((selectedItem) =>
-                  {
-                      //    if (selectedItem == null) return;
-                      //    // получаем выделенный объект
-                      //    Phone phone = selectedItem as Phone;
-
-                      //    Phone vm = new Phone()
-                      //    {
-                      //        Id = phone.Id,
-                      //        Company = phone.Company,
-                      //        Price = phone.Price,
-                      //        Title = phone.Title
-                      //    };
-                      //    PhoneWindow phoneWindow = new PhoneWindow(vm);
-
-
-                      //    if (phoneWindow.ShowDialog() == true)
-                      //    {
-                      //        // получаем измененный объект
-                      //        phone = db.Phones.Find(phoneWindow.Phone.Id);
-                      //        if (phone != null)
-                      //        {
-                      //            phone.Company = phoneWindow.Phone.Company;
-                      //            phone.Title = phoneWindow.Phone.Title;
-                      //            phone.Price = phoneWindow.Phone.Price;
-                      //            db.Entry(phone).State = EntityState.Modified;
-                      //            db.SaveChanges();
-                      //        }
-                      //    }
-                  }));
-            }
-        }
         // команда удаления
         public RelayCommand DeleteCommand
         {
